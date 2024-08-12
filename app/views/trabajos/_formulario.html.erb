@@ -1,0 +1,132 @@
+
+
+
+
+
+		
+<div class="container p-3 mb-5">
+    <div class="row">
+        <div class="col-lg-5 fondo_formulario_trabajos shadow d-none d-lg-block  tamaño_container_nuevo_trabajos">
+
+        </div>
+        <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center px-5 shadow tamaño_container_nuevo_trabajos">
+            <div class="row g-3 ">
+                <div class="col-12 text-center">
+                    <span class="fs-1">
+                        Nuevo Trabajo
+                    </span>
+                </div>
+                <div class="col-7 col-md-9 col-lg-8 col-xl-12">
+                    <label class="form-label">Nombre:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_field :nombre, class: "form-control form-control-sm text-center"%>
+					<%= form.hidden_field :id%>
+                </div>
+                <div class="col-5 col-md-3 col-lg-4 col-xl-4">
+                    <label class="form-label">Horas por Día:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.number_field :horas, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 col-xl-4">
+                    <label class="form-label">Salario Mínimo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_field :salario_minimo, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 col-xl-4">
+                    <label class="form-label">Salario Máximo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_field :salario_maximo, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Estudio Mínimo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_field :estudio_minimo, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Área Laboral:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_field :area, class: "form-control form-control-sm text-center"%>
+                </div>
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Tiene prestaciones?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6 text-center form-chek">
+                            
+                            <%= form.radio_button :prestacion, 'S', :check => true, class: "form-check-input ms-5"%><label class="form-check-label">Si</label>
+                        </div>
+                        <div class="col-6 text-center form-chek">
+                            
+                            <%= form.radio_button :prestacion, 'N', class: "form-check-input"%><label class="form-check-label me-5">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label class="form-label">Descripción:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                    </div>
+                    <%= form.text_area :descripcion, class: "form-control form-control-lg text-center"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+  
+                    <%= form.submit "Guardar", class: "btn btn-primary" %>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", trabajos_inicio_path, class: "btn btn-danger text-light"%>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

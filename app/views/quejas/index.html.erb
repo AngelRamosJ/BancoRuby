@@ -1,0 +1,111 @@
+
+
+
+<%= form_tag(buscar_quejas_path) do%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 text-center">
+      <label class="form-label">Motivo</label>
+    </div>
+    <div class="col-6 text-center">
+      <label class="form-label">Fecha de Suceso</label>
+    </div>
+    <div class="col-6">
+      <%= text_field_tag "motivo",nil,placeholder: "Ingresa motivo", class: "form-control form-control-sm text-center"%>
+    </div>
+    <div class="col-6">
+      <%= date_field_tag "fecha_suceso",nil,placeholder: "Ingresa fecha del suceso", class: "form-control form-control-sm text-center" %>
+    </div>
+    <div class="col-12 mb-5 mt-4 text-center">
+      <%= submit_tag "Buscar", class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+  <h1>Lista de todas las Quejas</h1>
+  <%= link_to 'NUEVO', new_queja_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>  
+  <%=link_to 'PDF', quejas_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+  <thead class="table-dark">  
+    <tr>
+      <th>Motivo</th>
+      <th>Fecha suceso</th>
+      <th>Tipo</th>
+      <th>Confirmacion</th>
+      <th>Respuesta</th>
+      <th>Causante</th>
+      <th>Evidencia</th>
+      <th>Cliente</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quejas.each do |queja| %>
+      <tr>
+        <td><%= queja.motivo %></td>
+        <td><%= queja.fecha_suceso %></td>
+        <% if queja.tipo == 'R'
+          tipoQueja = "Reclamo"
+        elsif queja.tipo == 'S'
+          tipoQueja = "Sugerencia"
+        else
+          tipoQueja = "Aclaración"
+        end
+           %>
+        <td><%=tipoQueja%></td>
+        <% if queja.confirmacion == 'S'
+          confirmacionQueja = "Si"
+        else
+          confirmacionQueja = "No"
+        end
+           %>
+        <td><%=confirmacionQueja%></td>
+        <% if queja.respuesta == 'S'
+          respuestaQueja = "Si"
+        else
+          respuestaQueja = "No"
+        end
+           %>
+        <td><%=respuestaQueja%></td>
+        <% if queja.causante == 'E'
+          causanteQueja = "Empleado"
+        elsif queja.causante == 'C'
+          causanteQueja = "Cliente"
+        elsif queja.causante == 'S'
+          causanteQueja = "Sucursal"
+        else
+          causanteQueja = "Persona Ajena"
+        end
+           %>
+        <td><%=causanteQueja%></td>
+        <% if queja.evidencia == 'S'
+          evidenciaQueja = "Si"
+        else
+          evidenciaQueja = "No"
+        end
+           %>
+        <td><%=evidenciaQueja%></td>
+        <td><%= queja.cliente.nombre + ' ' + queja.cliente.paterno + ' ' + queja.cliente.materno %></td>
+        <td><%= queja.descripcion %></td>
+        <td><%= link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), queja %></td>
+        <td><%= link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), edit_queja_path(queja) %></td>
+        <td><%= button_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), queja_path(queja), method: :delete, data: {confirm: '¿Estas seguro de eliminar queja?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+<%= will_paginate @quejas %>
+

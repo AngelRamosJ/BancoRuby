@@ -1,0 +1,183 @@
+<div class="container  mb-5 p-3">
+    <div class="row ">
+        <div class="col-lg-5 fondo_formulario_cuentas_ahorros shadow tamaño_container_nuevo_cuentas_ahorros d-none d-lg-block">
+
+        </div>
+        <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center shadow px-5 tamaño_container_nuevo_cuentas_ahorros">
+            <div class="row g-3">
+                <div class="col-12 text-center">
+                    <span class="fs-1">
+                        Nueva Cuenta de Ahorro
+                    </span>
+                </div>
+                
+
+                <div class="col-6">
+                    <label class="form-label ">CLABE:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :clabe, class: "form-control form-control-sm text-center"%>
+                    <%= form.hidden_field :id%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label ">Número de Tarjeta:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :numero_tarjeta, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label ">Monto:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :monto, class: "form-control form-control-sm text-center"%>
+                </div>
+                
+                <div class="col-6">
+                    <label class="form-label ">Monto Máximo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :monto_maximo, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-8 col-md-6 col-lg-8 col-xl-6">
+                    <label class="form-label ">Monto Máximo en Compra:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :limite_monto_transaccion, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-4 col-md-2 col-lg-4 col-xl-2">
+                    <label class="form-label ">Interes:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :interes, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-5 col-md-4 col-lg-5 col-xl-4">
+                    <label class="form-label ">Meses de Ahorro:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.number_field :meses_cambio, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-7">
+                    <label class="form-label ">Descuento en Compras:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :descuento_transaccion, class: "form-control form-control-sm text-center"%>
+                </div>
+                
+                
+                
+
+                <div class="col-5">
+                    <label class="form-label ">Impuesto Anual:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :impuesto_anual, class: "form-control form-control-sm text-center"%>
+                </div>
+                
+                
+                <div class="col-7 col-md-12 col-lg-7 col-xl-12">
+                    <label class="form-label">Fecha del Creación:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.date_field :fecha_creacion, class: "form-control form-control-sm text-center"%>
+                </div>
+                
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">Estado:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-md-4 text-center g-0 me-md-0 g-md-3 form-chek">
+                            <%= form.radio_button :estado, 'A', :check => true, class: "form-check-input"%><label class="form-check-label">Activa</label>
+
+                        </div>
+                        <div class="col-4 text-center g-0 g-md-3 form-chek">
+                            <%= form.radio_button :estado, 'B', class: "form-check-input"%><label class="form-check-label me-3">Bloqueada</label>
+                        </div>
+                        <div class="col-4 text-center g-0 g-md-3 form-chek">
+                            <%= form.radio_button :estado, 'S', class: "form-check-input"%><label class="form-check-label">Suspendida</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+          
+                
+        
+                <div class="col-12 mb-4">
+                    <label class="form-label">Cliente:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.select 'cliente_id',  @clientes.collect {|p| [p.nombre + ' ' + p.paterno + ' ' + p.materno, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                        <%= form.submit "Guardar", class: "btn btn-primary"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", ahorros_inicio_path, class: "btn btn-danger text-light"%>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

@@ -1,0 +1,133 @@
+<div class="container-fluid d-flex text-center">
+	<h1 class="fs-1">Consulta de Transacciones</h1>
+
+</div>
+<%= form_tag(buscar_transacciones_path, id: "formulario_consultar") do%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-12 padre_radio text-center mb-4">
+            <label class="col-form-label fs-3">¿Consultar Cuenta de Ahorro o Débito?:</label>
+            <div class="etiqueta-error ocultar_error">
+
+                <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                <span class="etiqueta-error-texto"></span>
+                
+            </div>
+            <div class="row">
+                <div class="col-6 text-center g-0 ms-md-0 g-md-3 form-chek">
+
+                    <%= radio_button_tag 'eleccion', 'D', false,class: "form-check-input" %>
+                    <label class="form-check-label">DÉBITO</label>
+                </div>
+                <div class="col-6 text-center g-0 g-md-3 form-chek">
+                    <%= radio_button_tag 'eleccion', 'A', false, class: "form-check-input "%>
+                    <label class="form-check-label me-md-5">AHORRO</label>
+                </div>
+            </div>
+            
+        </div>
+
+		<div class="col-6 text-center d-none input_debito mb-4">
+			<label class="form-label">CLABE</label>
+			<div class="etiqueta-error ocultar_error">
+
+	            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+	            <span class="etiqueta-error-texto"></span>
+	            
+	        </div>
+	        <%= select_tag "debito", options_from_collection_for_select(@debitos, "clabe", "clabe"), prompt: "Selecciona uno", class: "form-select form-select-sm" %>
+		</div>
+		<div class="col-6 text-center d-none input_ahorro mb-4">
+			<label class="form-label">CLABE</label>
+			<div class="etiqueta-error ocultar_error">
+
+	            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+	            <span class="etiqueta-error-texto"></span>
+	            
+	        </div>
+	        
+	        <%= select_tag "ahorro", options_from_collection_for_select(@ahorros, "clabe", "clabe"), prompt: "Selecciona uno", class: "form-select form-select-sm" %>
+		</div>
+		<div class="col-6 d-none input_mes text-center mb-4">
+			<label class="form-label">MES</label>
+			<div class="etiqueta-error ocultar_error">
+
+	            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+	            <span class="etiqueta-error-texto"></span>
+	            
+	        </div>
+
+			<%= select_tag 'mes', options_for_select([["Enero","1"],["Febrero","2"],["Marzo","3"],["Abril","4"],["Mayo","5"],["Junio","6"],["Julio","7"],["Agosto","8"],["Septiembre","9"],["Octubre","10"],["Noviembre","11"],["Diciembre","12"]]),prompt: 'Selecciona uno',  class: "form-select form-select-sm"%>
+		</div>
+		<div class="col-12 mb-5 mt-4 text-center">
+			<%= submit_tag "Buscar", class: "btn btn-success", id: "buscar_transacciones_boton"%>
+		</div>
+	</div>
+</div>
+
+<% end %>
+<% @datos_cuenta.each do |cuenta| %>
+  <span> Nombre: <%= cuenta['nombre']%></span>
+<% end %>
+<br>
+<% @monto_total_mes.each do |monto_mes| %>
+  <span> Movimiento de dinero: <%= monto_mes['movimiento']%></span>
+<% end %>
+<br>
+<% @estado_clientes.each do |num_cliente| %>
+  <span> Movimiento de dinero: <%= num_cliente['estado']%></span>
+  <span> Numero de Clientes: <%= num_cliente['num_clientes']%></span>
+<% end %>
+
+
+
+<div class="container-fluid d-flex">
+	<h1>Lista de Transacciones</h1>
+	<%=link_to 'PDF', consultar_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+  <thead class="table-dark">  
+    <tr>
+      <th>Clabe Cuenta Origen</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Enviado Mediante</th>
+      <th>Clabe destino (Si aplica)</th>
+      <th>Tarjeta destino (Si aplica)</th>
+      <th>Monto anterior</th>
+      <th>Monto posterior</th>
+      <th>Dinero Manejado</th>
+      <th>¿Ingreso o Egreso?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transacciones.each do |transaccion| %>
+      <tr>
+        <td><%= transaccion.clabe_origen %></td>
+        <td><%= transaccion.fecha_creacion %></td>
+        <td><%= transaccion.hora_creacion %></td>
+        <td><%= transaccion.tipo_envio == 'C' ? "CLABE" : "TARJETA" %></td>
+        <td><%= transaccion.clabe_destino %></td>
+        <td><%= transaccion.tarjeta_destino %></td>
+        <td><%= transaccion.monto_anterior %></td>
+     	<td><%= transaccion.monto_nuevo %></td>
+     	<% if @tipo_cuenta == 'A'
+				monto_manejado = transaccion.monto_nuevo - transaccion.monto_anterior     			
+     	   else
+     	   		monto_manejado = transaccion.monto_anterior - transaccion.monto_nuevo
+     	   end %>
+     	<td><%= monto_manejado %></td>
+     	
+     	<td><%= @tipo_cuenta == 'A' ? "Ingreso" : "Egreso" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

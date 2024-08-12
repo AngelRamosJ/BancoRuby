@@ -1,0 +1,178 @@
+<%= form_with(model: prestamo, local: true, id: 'formulario_prestamos') do |form| %>
+  <% if prestamo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prestamo.errors.count, "error") %> prohibited this prestamo from being saved:</h2>
+
+      <ul>
+      <% prestamo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="container  mb-5 p-3">
+    <div class="row ">
+        <div class="col-lg-5 fondo_formulario_prestamos shadow tamaño_container_nuevo_prestamos d-none d-lg-block">
+
+        </div>
+        <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center shadow px-5 tamaño_container_nuevo_prestamos">
+            <div class="row g-3">
+                <div class="col-12 text-center">
+                    <span class="fs-1">
+                        Nuevo Préstamo
+                    </span>
+                </div>
+                
+
+                <div class="col-12">
+                    <label class="form-label ">Nombre o Descripción:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.text_field :descripcion, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                    <label class="form-label">Cliente:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.select 'cliente_id',  @clientes.collect {|p| [p.nombre + ' ' + p.paterno + ' ' + p.materno, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                    <label class="form-label ">Cantidad:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.text_field :cantidad, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-6 col-lg-6">
+                    <label class="form-label">Intereses:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.text_field :intereses, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-6 col-lg-6">
+                    <label class="form-label ">Días de Tolerancia:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.number_field :tiempo_tolerancia, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Fecha de Expedición:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.date_field :fecha_expedicion, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Fecha de Termino:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                    <%= form.date_field :fecha_termino, class: "form-control form-control-sm text-center" %>
+                </div>
+                
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">Modo de Pago:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-md-center ms-2 g-0 ms-md-0 g-md-3 form-chek">
+                   
+                            <%= form.radio_button :modo_pago, 'E', :check => true, class: "form-check-input"%><label class="form-check-label">Efectivo</label>
+                        </div>
+                        <div class="col-4 text-md-center g-0 g-md-3 form-chek">
+                           
+                            <%= form.radio_button :modo_pago, 'T', class: "form-check-input"%><label class="form-check-label">Tarjeta</label>
+                        </div>
+                        <div class="col-3 col-md-4 text-md-center g-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :modo_pago, 'N', class: "form-check-input"%><label class="form-check-label">Nomina</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">Estado del Préstamo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-md-center ms-2 g-0 ms-md-0 g-md-3 form-chek">
+                    
+                            <%= form.radio_button :estado, 'E', :check => true, class: "form-check-input"%><label class="form-check-label">Estable</label>
+                        </div>
+                        <div class="col-4 text-md-center g-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :estado, 'A', class: "form-check-input"%><label class="form-check-label">Atrasado</label>
+                        </div>
+                        <div class="col-3 col-md-4 text-md-center mb-4 g-0 mb-lg-3 mb-xl-4 g-md-3 form-chek">
+                           
+                            <%= form.radio_button :estado, 'P', class: "form-check-input"%><label class="form-check-label">Pagado</label>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+
+                
+                
+                <div class="col-6 d-grid grap-2 mx-auto">
+
+                    <%= form.submit "Guardar", class: "btn btn-primary"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", prestamos_path, class: "btn btn-danger text-light"%>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  </div>
+
+<% end %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Proyecto</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/bootstrap','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/jquery','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/jquery-validation','data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'custom/ahorros','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/citas','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/clientes','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/debitos','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/departamentos','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/empleados','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/localidades','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/operaciones','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/prestamos','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/quejas','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'custom/trabajos','data-turbolinks-track': 'reload' %>
+
+
+  </head>
+  <body>
+    <%= render 'layouts/header' %>  
+    <%= yield %>
+  </body>
+</html>

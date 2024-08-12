@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+        	<span class="fs-1"> Consulta Trabajos</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Trabajos</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre</th>
+                        <td><%= @trabajo.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Salario Mínimo</th>
+                        <td><%= @trabajo.salario_minimo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Salario Máximo</th>
+                        <td><%= @trabajo.salario_maximo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estudio Mínimo</th>
+                        <td><%= @trabajo.estudio_minimo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Área Laboral</th>
+                        <td><%= @trabajo.area %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Horas por Día</th>
+                        <td><%= @trabajo.horas %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Prestaciones</th>
+                        <td><%= @prestacion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora de Cierre</th>
+                        <td><%= @trabajo.horas %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Descripción</th>
+                        <td><%= @trabajo.descripcion %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", editar_trabajo_path(@trabajo.id), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", trabajos_inicio_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

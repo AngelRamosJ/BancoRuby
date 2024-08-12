@@ -1,0 +1,94 @@
+<%= form_tag(buscar_debitos_path) do%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-3 text-center">
+			<label class="form-label">CLABE</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">Saldo Mínimo</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">Bonificación de Uso</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">Fecha de Creación</label>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "clabe",nil,placeholder: "Ingresa clabe", class: "form-control form-control-sm text-center"%>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "saldo_minimo",nil,placeholder: "Ingresa saldo minimo", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "bonificacion_uso",nil,placeholder: "Ingresa bonificacion de uso", class: "form-control form-control-sm text-center" %>
+		</div>
+				<div class="col-3">
+			<%= date_field_tag "fecha_creacion",nil,placeholder: "Ingresa fecha de creacion", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-12 mb-5 mt-4 text-center">
+			<%= submit_tag "Buscar", class: "btn btn-success" %>
+		</div>
+	</div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+	<h1>Lista de todas las Cuentas de Débito</h1>
+	<%= link_to 'NUEVO', nuevo_debito_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>	
+	<%=link_to 'PDF', debitos_inicio_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+	<thead class="table-dark">
+		<tr>
+			<th>CLABE</th>
+			<th>Número de Tarjeta</th>
+			<th>Monto</th>
+			<th>Monto Máximo</th>
+			<th>Estado</th>
+			<th>Fecha de Creación</th>
+			<th>Saldo Mínimo</th>
+			<th>Comisión</th>
+			<th>Seguro</th>
+			<th>Cobro por Inactividad</th>
+			<th>Bonificación por Uso</th>
+			<th>Cliente</th>
+			<th colspan="3"></th>
+		</tr>
+		</thead>
+	<tbody>
+	<% @debitos.each do |debito| %>
+
+		<tr>
+			<td><%=debito.clabe%></td>
+			<td><%=debito.numero_tarjeta%></td>
+			<td><%=debito.monto%></td>
+			<td><%=debito.monto_maximo%></td>
+			<% if debito.estado == 'A'
+					estadoDebito = "Activa"
+				elsif debito.estado == 'B'
+					estadoDebito = "Bloqueada"
+				else
+					estadoDebito = "Suspendida"
+				end
+				 	 %>
+			<td><%=estadoDebito%></td>
+			<td><%=debito.fecha_creacion%></td>
+			<td><%=debito.saldo_minimo%></td>
+			<td><%=debito.comision%></td>
+			<td><%=debito.seguro == 'S' ? 'Si tiene' : 'No tiene'%></td>
+			<td><%=debito.cobro_inactividad%></td>
+			<td><%=debito.bonificacion_uso%></td>
+			<td><%= debito.cliente.nombre + ' ' + debito.cliente.paterno + ' ' + debito.cliente.materno %></td>
+			<td><%=link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), mostrar_debito_path(debito.id)%></td>
+			<td><%=link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), editar_debito_path(debito.id)%></td>
+			<td><%=link_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), eliminar_debito_path(debito.id), method: :delete, data: {confirm: '¿Estas seguro de eliminar cuenta de débito?'}%></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+</div>
+<%= will_paginate @debitos %>

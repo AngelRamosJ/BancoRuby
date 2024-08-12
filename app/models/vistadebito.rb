@@ -1,0 +1,4 @@
+class Vistadebito < ApplicationRecord
+
+end
+

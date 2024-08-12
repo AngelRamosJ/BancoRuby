@@ -1,0 +1,97 @@
+
+
+
+<%= form_tag(buscar_prestamos_path) do%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 text-center">
+      <label class="form-label">Cantidad</label>
+    </div>
+    <div class="col-4 text-center">
+      <label class="form-label">Intereses</label>
+    </div>
+    <div class="col-4 text-center">
+      <label class="form-label">Días de Tolerancia</label>
+    </div>
+    <div class="col-4">
+      <%= text_field_tag "cantidad",nil,placeholder: "Ingresa cantidad", class: "form-control form-control-sm text-center"%>
+    </div>
+    <div class="col-4">
+      <%= text_field_tag "intereses",nil,placeholder: "Ingresa intereses", class: "form-control form-control-sm text-center" %>
+    </div>
+    <div class="col-4">
+      <%= text_field_tag "tiempo_tolerancia",nil,placeholder: "Ingresa dias de tolerancia", class: "form-control form-control-sm text-center" %>
+    </div>
+    <div class="col-12 mb-5 mt-4 text-center">
+      <%= submit_tag "Buscar", class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+  <h1>Lista de todos los Préstamos</h1>
+  <%= link_to 'NUEVO', new_prestamo_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>  
+  <%=link_to 'PDF', prestamos_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+  <thead class="table-dark">  
+    <tr>
+      <th>Descripcion</th>
+      <th>Cantidad</th>
+      <th>Intereses</th>
+      <th>Fecha expedicion</th>
+      <th>Fecha termino</th>
+      <th>Tiempo tolerancia</th>
+      <th>Modo pago</th>
+      <th>Estado</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prestamos.each do |prestamo| %>
+      <tr>
+        <td><%= prestamo.descripcion %></td>
+        <td><%= prestamo.cantidad %></td>
+        <td><%= prestamo.intereses %></td>
+        <td><%= prestamo.fecha_expedicion %></td>
+        <td><%= prestamo.fecha_termino %></td>
+        <td><%= prestamo.tiempo_tolerancia %></td>
+        <% if prestamo.modo_pago == 'E'
+          pagoPrestamo = "Efectivo"
+        elsif prestamo.modo_pago == 'T'
+          pagoPrestamo = "Tarjeta"
+        else
+          pagoPrestamo = "Nomina"
+        end
+           %>
+        <td><%=pagoPrestamo%></td>
+        <% if prestamo.estado == 'E'
+            estadoPrestamo = "Estable"
+          elsif prestamo.estado == 'A'
+            estadoPrestamo = "Atrasado"
+          else
+            estadoPrestamo = "Pagado"
+          end
+             %>
+        <td><%=estadoPrestamo%></td>
+        <td><%= prestamo.cliente.nombre + ' ' + prestamo.cliente.paterno + ' ' + prestamo.cliente.materno %></td>
+        
+        <td><%= link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), prestamo %></td>
+        <td><%= link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), edit_prestamo_path(prestamo) %></td>
+        <td><%= button_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), prestamo_path(prestamo), method: :delete, data: {confirm: '¿Estas seguro de eliminar prestamo?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+<%= will_paginate @prestamos %>

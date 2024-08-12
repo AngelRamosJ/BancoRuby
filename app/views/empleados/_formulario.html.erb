@@ -1,0 +1,241 @@
+<div class="container mb-5 p-3 p-md-5 p-lg-4 p-xl-5 ">
+    <div class="row">
+        <div class="col-lg-5 fondo_formulario_empleados d-none d-lg-block shadow tamaño_container_nuevo_empleados">
+
+        </div>
+        <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center vh-10 shadow px-5 tamaño_container_nuevo_empleados">
+            <div class="row g-3 ">
+                <div class="col-12 text-center">
+                    <span class="fs-1">
+                        Nuevo Empleado
+                    </span>
+                </div>
+                
+
+                <div class="col-12">
+                    <label class="form-label ">Nombre:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :nombre, class: "form-control form-control-sm text-center error"%>
+                    <%= form.hidden_field :id%>
+                </div>
+                
+                <div class="col-12 col-md-6">
+                    <label class="form-label ">Paterno:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :paterno, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Materno:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :materno, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-12 ">
+                    <label class="form-label">Correo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :correo, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 col-lg-5 col-xl-4">
+                    <label class="form-label ">Teléfono:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :telefono, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 col-lg-7 col-xl-8">
+                    <label class="form-label">Fecha Nacimiento:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.date_field :fecha_nacimiento, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-7">
+                    <label class="form-label ">CURP:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :curp, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-5">
+                    <label class="form-label">RFC:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :rfc, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-4 col-xl-3">
+                    <label class="form-label">Salario:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :salario, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-8 col-xl-9">
+                    <label class="form-label">Trabajo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.select 'trabajo_id',  @trabajos.collect {|p| [p.nombre, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-6 col-md-7 col-lg-12">
+                    <label class="form-label ">Departamento:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.select 'departamento_id',  @departamentos.collect {|p| [p.nombre, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-6 col-md-5 col-lg-12">
+                    <label class="form-label">Fecha Contratación:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.date_field :fecha_contratacion, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Bonos:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :bono, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Descuentos:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :descuento, class: "form-control form-control-sm text-center"%>
+                </div>
+
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Se le puede Prestar Dinero?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center g-0 ms-md-0 g-md-3 form-chek">
+     
+                            <%= form.radio_button :prestacion_dinero, 'S', :check => true, class: "form-check-input ms-md-5"%><label class="form-check-label">Si</label>
+                        </div>
+                        <div class="col-5 text-center g-0 g-md-3 form-chek">
+                    
+                            <%= form.radio_button :prestacion_dinero, 'N', class: "form-check-input"%><label class="form-check-label me-md-5">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-12 ">
+                    <label class="form-label ">Localidad:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.select 'localidad_id',  @localidades.collect {|p| [p.calle + " " + p.exterior + " " + p.interior + " " + p.colonia + " " + p.codigo_postal + " " + p.ciudad + " " + p.estado.nombre, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Usuario:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :login, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 mb-3 ">
+                    <label class="form-label">Contraseña:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :password, class: "form-control form-control-sm text-center"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                        <%= form.submit "Guardar", class: "btn btn-primary"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", empleados_inicio_path, class: "btn btn-danger text-light"%>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+

@@ -1,0 +1,302 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+
+#alert{
+    color: red;
+}
+
+#notice{
+    color: green;
+}
+
+.fondo_formulario_departamentos{
+    background-image: url(fondo_formulario_departamentos_1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tamaño_container_nuevo_departamentos{
+    height: 800px;   
+}
+
+.fondo_formulario_localidades{
+    background-image: url(fondo_formulario_localidades_1.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tamaño_container_nuevo_localidades{
+    height: 700px;   
+}
+
+.fondo_formulario_trabajos{
+    background-image: url(fondo_formulario_trabajos.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tamaño_container_nuevo_trabajos{
+    height: 700px;   
+}
+
+.fondo_formulario_empleados{
+    background-image: url(fondo_formulario_empleados_8.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tamaño_container_nuevo_empleados{
+    height: 1250px;   
+}
+
+.fondo_formulario_clientes{
+    background-image: url(fondo_formulario_clientes_4.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_clientes{
+    height: 1050px;   
+}
+
+.fondo_mostrar_empleados {
+    background: linear-gradient(90deg, #c2dab10e 0%, #96bcbe15 100%);
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(161, 255, 189, 0.315);
+    
+}
+.tamaño_container_mostrar_empleados{
+    height: 750px;   
+}
+
+.tamaño_container_mostrar_empleados_nuevo{
+    height: 900px;   
+}
+
+
+.fondo_formulario_prestamos{
+    background-image: url(fondo_formulario_prestamos.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_prestamos{
+    height: 930px;   
+}
+
+.fondo_formulario_quejas{
+    background-image: url(fondo_formulario_quejas_9.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_quejas{
+    height: 1300px;   
+}
+
+.fondo_formulario_citas{
+    background-image: url(fondo_formulario_citas.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_citas{
+    height: 1200px;   
+}
+
+.fondo_formulario_cuentas_debitos{
+    background-image: url(fondo_formulario_cuentas_debitos_1.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_cuentas_debitos{
+    height: 1100px;   
+}
+
+.fondo_formulario_cuentas_ahorros{
+    background-image: url(fondo_formulario_cuentas_ahorros_1.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_cuentas_ahorros{
+    height: 1030px;   
+}
+
+
+.fondo_login{
+    background-image: url(fondo_login.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_login{
+    height: 500px;   
+}
+
+.estilo_login_iconos{
+    height: 20px;
+    filter: invert(100%);
+}
+
+.imagen_retirar{
+    background-image: url(retirar.png);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imagen_depositar{
+    background-image: url(depositar.png);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.imagen_consultar{
+    background-image: url(consultar.png);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.tamaño_container_col_principal{
+    height: 525px;   
+}
+.tamaño_container_col_cuadro_interior{
+    width: 430px;
+    height: 600px;   
+}
+.tamaño_container_imagenes{
+    width: 350px;
+    height: 300px;   
+}
+
+.fondo_formulario_transferir{
+    background-image: url(fondo_formulario_transferir_8.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_transferir{
+    height: 600px;   
+}
+
+.fondo_formulario_depositar{
+    background-image: url(fondo_formulario_depositar.jpg);
+    background-position: center center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tamaño_container_nuevo_depositar{
+    height: 600px;   
+}
+
+
+.success{
+    border-color: #25d500;
+    box-shadow: 0 0 0 0.2rem rgba(103, 250, 34, 0.25);
+}
+.success:focus{
+    border-color: #25d500;
+    box-shadow: 0 0 0 0.2rem rgba(103, 250, 34, 0.25);
+}
+.ocultar_error{
+    visibility:hidden;
+}
+.mostrar_error{
+    visibility: visible;
+}
+.tiene-error{
+    border-color: #db2020;
+    box-shadow: 0 0 0 0.2rem rgba(240, 15, 15, 0.25);
+}
+.tiene-error:focus{
+    border-color: #db2020;
+    box-shadow: 0 0 0 0.2rem rgba(240, 15, 15, 0.25);
+}
+.etiqueta-error {
+    position: relative;
+    display: inline-block;
+
+}
+
+.etiqueta-error .etiqueta-error-texto {
+    visibility: hidden;
+    width: 320px;
+    background-color: rgb(200, 0, 0);
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.etiqueta-error .etiqueta-error-texto::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgb(100, 0, 0) transparent transparent;
+}
+
+.etiqueta-error:hover .etiqueta-error-texto {
+    visibility: visible;
+}
+
+.etiqueta-error .etiqueta-error-texto {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.etiqueta-error:hover .etiqueta-error-texto {
+    opacity: 0.95;
+}
+.tamaño_icono_error{
+    height: 20px;
+    width: 20px;
+}
+

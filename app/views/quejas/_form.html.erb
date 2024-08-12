@@ -1,0 +1,226 @@
+<%= form_with(model: queja, local: true, id: 'formulario_quejas') do |form| %>
+  <% if queja.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(queja.errors.count, "error") %> prohibited this queja from being saved:</h2>
+
+      <ul>
+      <% queja.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="container  mb-5 p-3">
+    <div class="row ">
+        <div class="col-lg-5 fondo_formulario_quejas shadow tamaño_container_nuevo_quejas d-none d-lg-block">
+
+        </div>
+        <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center shadow px-5 tamaño_container_nuevo_quejas">
+            <div class="row g-3">
+                <div class="col-12 text-center">
+                    <span class="fs-1">
+                        Nueva Queja
+                    </span>
+                </div>
+                
+
+                <div class="col-12">
+                    <label class="form-label ">Motivo:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_field :motivo, class: "form-control form-control-sm text-center" %>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                    <label class="form-label">Cliente:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.select 'cliente_id',  @clientes.collect {|p| [p.nombre + ' ' + p.paterno + ' ' + p.materno, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                    <label class="form-label">Fecha del Suceso:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.date_field :fecha_suceso, class: "form-control form-control-sm text-center" %>
+                </div>
+                
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">Tipo de Queja:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-3 col-md-4 text-center me-3 g-0 me-md-0 g-md-3 form-chek">
+                  
+                            <%= form.radio_button :tipo, 'R', :check => true, class: "form-check-input"%><label class="form-check-label">Reclamo</label>
+                        </div>
+                        <div class="col-4 text-center me-1 g-0 me-md-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :tipo, 'S', class: "form-check-input"%><label class="form-check-label">Sugerencia</label>
+                        </div>
+                        <div class="col-4 text-center g-0 g-md-3 form-chek">
+                           
+                            <%= form.radio_button :tipo, 'A', class: "form-check-input"%><label class="form-check-label">Aclaración</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Desea una respuesta?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center g-0 g-md-3 form-chek ">
+              
+                            <%= form.radio_button :respuesta, 'S', :check => true, class: "form-check-input ms-md-5"%><label class="form-check-label">Si</label>
+                        </div>
+                        <div class="col-5 text-center g-0 g-md-3 form-chek">
+                           
+                            <%= form.radio_button :respuesta, 'N', class: "form-check-input"%><label class="form-check-label me-md-5">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Quién fue el Causante?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center g-0 g-md-3 form-chek">
+                   
+                            <%= form.radio_button :causante, 'E', :check => true, class: "form-check-input ms-1"%><label class="form-check-label">Empleado</label>
+                        </div>
+                        <div class="col-6 text-center g-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :causante, 'C', class: "form-check-input"%><label class="form-check-label me-5">Cliente</label>
+                        </div>
+                        <div class="col-6 text-center g-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :causante, 'S', class: "form-check-input"%><label class="form-check-label me-2">Sucursal</label>
+                        </div>
+                        <div class="col-6 text-center g-0 g-md-3 form-chek">
+                            
+                            <%= form.radio_button :causante, 'A', class: "form-check-input ms-1"%><label class="form-check-label">Persona Ajena</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+       
+                
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Tiene Evidencia del Suceso?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center g-0 g-md-3 form-chek ">
+                   
+                            <%= form.radio_button :evidencia, 'S', :check => true, class: "form-check-input ms-md-5"%><label class="form-check-label">Si</label>
+                        </div>
+                        <div class="col-5 text-center g-0 g-md-3 form-chek">
+                     
+                            <%= form.radio_button :evidencia, 'S', class: "form-check-input"%><label class="form-check-label e-md-5">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                
+
+                <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Desea una Confirmación al Correo?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center g-0 ms-md-0 g-md-3 form-chek">
+     
+                            <%= form.radio_button :confirmacion, 'S', :check => true, class: "form-check-input ms-md-5"%><label class="form-check-label">Si</label>
+                        </div>
+                        <div class="col-5 text-center g-0 g-md-3 form-chek">
+                    
+                            <%= form.radio_button :confirmacion, 'N', class: "form-check-input"%><label class="form-check-label me-md-5">No</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
+
+                <div class="col-12 mb-3">
+                    <label class="form-label">Descripción:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <%= form.text_area :descripcion, class: "form-control form-control-lg text-center" %>
+                </div>
+                
+             
+
+                <div class="col-6 d-grid grap-2 mx-auto">
+
+                    <%= form.submit "Guardar", class: "btn btn-primary"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", quejas_path, class: "btn btn-danger text-light"%>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+<% end %>

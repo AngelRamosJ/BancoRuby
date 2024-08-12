@@ -1,0 +1,86 @@
+<%= form_tag(depositar_monto_cuenta_path, id: "formulario_depositar") do%>
+    <div class="container mb-5 p-3 p-md-5 p-lg-4 p-xl-5 ">
+        <div class="row">
+            <div class="col-lg-5 fondo_formulario_depositar d-none d-lg-block shadow tamaño_container_nuevo_depositar">
+
+            </div>
+            <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center vh-10 shadow px-5 tamaño_container_nuevo_depositar">
+                <div class="row g-3 ">
+                    <div class="col-12 text-center">
+                        <span class="fs-1">
+                            Depósito
+                        </span>
+                    </div>
+                    
+
+                    <div class="col-12 padre_radio">
+                        <label class="col-form-label text-center">¿Depósito por Tarjeta o CLABE?:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                            <span class="etiqueta-error-texto"></span>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-center g-0 ms-md-0 g-md-3 form-chek">
+
+                                <%= radio_button_tag 'eleccion', 'C', false,class: "form-check-input" %>
+                                <label class="form-check-label">CLABE</label>
+                            </div>
+                            <div class="col-6 text-center g-0 g-md-3 form-chek">
+                                <%= radio_button_tag 'eleccion', 'T', false, class: "form-check-input "%>
+                                <label class="form-check-label me-md-5">TARJETA</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                   
+
+                    <div class="col-12 d-none inputs_clabe">
+                        <label class="form-label ">Cuenta (CLABE):</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                            <span class="etiqueta-error-texto"></span>
+                            
+                        </div>
+                        
+                        <%=select("cuenta","clabe",@ahorros.collect {|p| [p.clabe, p.clabe]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm")%>
+                    </div>
+                    <div class="col-12 d-none inputs_tarjeta">
+                        <label class="form-label ">Cuenta (Tarjeta):</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                            <span class="etiqueta-error-texto"></span>
+                            
+                        </div>
+                        <%=select("cuenta","tarjeta",@ahorros.collect {|p| [p.numero_tarjeta, p.numero_tarjeta]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm")%>
+                    </div>
+
+                    <div class="col-12 ">
+                        <label class="form-label ">Monto:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                            <span class="etiqueta-error-texto"></span>
+                            
+                        </div>
+    
+                        <%= text_field_tag "monto",nil,placeholder: "Ingresa clabe monto", class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-6 d-grid grap-2 mx-auto">
+                        <%= submit_tag "Guardar", class: "btn btn-primary" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+<% end %>

@@ -1,0 +1,49 @@
+
+
+<div class="container  mb-5 p-3 px-5">
+        <div class="row d-flex align-items-center justify-content-center vh-100">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4 fondo_login shadow tamaño_container_login d-none d-lg-block">
+
+            </div>
+            <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center shadow px-5 tamaño_container_login">
+                <div class="row g-3">
+                    <div class="col-12 text-center">
+                        <span class="fs-1">
+                            Iniciar Sesión Cliente
+                        </span>
+                        <p id="alert"><%= alert %></p>
+                    </div>
+
+                <%= form_tag(validar_cliente_path) do%>
+                    <div class="col-md-1 col-lg-0"></div>
+                    <div class="col-12 col-md-10 col-lg-12  mb-md-2 mb-lg-0">
+                        <label class="form-label ">Usuario:</label>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text bg-success"><%=image_tag('usuario.png', width: 20, height: 20, alt: 'U', class: "estilo_login_iconos")%></span>
+             
+                            <%= text_field_tag "nombre",nil, placeholder: 'Ingresar usuario', class: "form-control form-control-sm text-center"%>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-0"></div>
+                    <div class="col-md-1 col-lg-0"></div>
+                    <div class="col-12 col-md-10 col-lg-12 mb-2 mb-md-4">
+                        <label class="form-label ">Contraseña:</label>
+                        <div class="input-group flex-nowrap input-group">
+                            <span class="input-group-text bg-success"><%=image_tag('llave.png', width: 20, height: 20, alt: 'P', class: "estilo_login_iconos")%></span>
+                           
+                            <%= text_field_tag "contraseña",nil, placeholder: 'Ingresar contraseña', class: "form-control form-control-sm text-center" %>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-0"></div>
+                    <div class="col-6 d-grid grap-2 mx-auto">
+                        <input class="btn btn-success" type="submit" value="Guardar">
+                    </div>
+                <% end %>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        
+        
+    </div>

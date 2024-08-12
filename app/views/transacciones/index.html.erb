@@ -1,0 +1,42 @@
+<div class="container-fluid d-flex">
+  <h1>Lista de todas las Transacciones</h1>
+  <%= link_to 'NUEVO', new_transaccion_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>  
+</div>
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+  <thead class="table-dark">  
+    <tr>
+      <th>Clabe origen</th>
+      <th>Monto nuevo</th>
+      <th>Monto anterior</th>
+      <th>Fecha creacion</th>
+      <th>Mes</th>
+      <th>Hora creacion</th>
+      <th>Enviado por</th>
+      <th>Clabe destino</th>
+      <th>Tarjeta destino</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transacciones.each do |transaccion| %>
+      <tr>
+        <td><%= transaccion.clabe_origen %></td>
+        <td><%= transaccion.monto_nuevo %></td>
+        <td><%= transaccion.monto_anterior %></td>
+        <td><%= transaccion.fecha_creacion %></td>
+        <td><%= transaccion.mes %></td>
+        <td><%= transaccion.hora_creacion %></td>
+        <td><%= transaccion.tipo_envio == 'C' ? "CLABE" : "TARJETA" %></td>
+        <td><%= transaccion.clabe_destino %></td>
+        <td><%= transaccion.tarjeta_destino %></td>
+        <td><%= transaccion.cliente.nombre + ' ' + transaccion.cliente.paterno + ' ' + transaccion.cliente.materno %></td>
+        <td><%= link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), transaccion %></td>
+        <td><%= link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), edit_transaccion_path(transaccion) %></td>
+        <td><%= link_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), transaccion, method: :delete, data: {confirm: '¿Estas seguro de eliminar transacción?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

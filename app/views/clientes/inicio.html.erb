@@ -1,0 +1,104 @@
+<%= form_tag(buscar_clientes_path) do%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-3 text-center">
+			<label class="form-label">Apellido Paterno</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">Apellido Materno</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">RFC</label>
+		</div>
+		<div class="col-3 text-center">
+			<label class="form-label">CURP</label>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "paterno",nil,placeholder: "Ingresa paterno", class: "form-control form-control-sm text-center"%>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "materno",nil,placeholder: "Ingresa materno", class: "form-control form-control-sm text-center"%>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "rfc",nil,placeholder: "Ingresa RFC", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-3">
+			<%= text_field_tag "curp",nil,placeholder: "Ingresa CURP", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-12 mb-5 mt-4 text-center">
+			<%= submit_tag "Buscar", class: "btn btn-success" %>
+		</div>
+	</div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+	<h1>Lista de todos los Clientes</h1>
+	<%= link_to 'NUEVO', nuevo_cliente_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>	
+	<%=link_to 'PDF', clientes_inicio_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+	<thead class="table-dark">
+		<tr>
+			<th>Nombre</th>
+			<th>Paterno</th>
+			<th>Materno</th>
+			<th>RFC</th>
+			<th>CURP</th>
+			<th>Fecha de Nacimiento</th>
+			<th>Correo</th>
+			<th>Teléfono</th>
+			<th>Estado Laboral</th>
+			<th>Salario Mensual</th>
+			<th>Estudio</th>
+			<th>Años Laborales</th>
+			<th>¿Riesgo Laboral?</th>
+			<th>Usuario</th>
+			<th>Contraseña</th>
+			<th>Localidad</th>
+			<th colspan="3"></th>
+		</tr>
+		</thead>
+	<tbody>
+	<% @clientes.each do |cliente| %>
+
+		<tr>
+			<td><%=cliente.nombre%></td>
+			<td><%=cliente.paterno%></td>
+			<td><%=cliente.materno%></td>
+			<td><%=cliente.rfc%></td>
+			<td><%=cliente.curp%></td>
+			<td><%=cliente.fecha_nacimiento%></td>
+			<td><%=cliente.correo%></td>
+			<td><%=cliente.telefono%></td>
+			<% if cliente.estado_laboral == 'T'
+					estadoClien = "Trabajador"
+				elsif cliente.estado_laboral == 'P'
+					estadoClien = "Pensionado"
+				elsif cliente.estado_laboral == 'D'
+					estadoClien = "Desempleado"
+				else
+					estadoClien = "Estudiante"
+				end
+				 	 %>
+			<td><%=estadoClien%></td>
+			<td><%=cliente.salario_mensual%></td>
+			<td><%=cliente.estudio%></td>
+			<td><%=cliente.tiempo_laboral%></td>
+			<td><%=cliente.riesgo_trabajo == 'S' ? 'Si' : 'No' %></td>
+			<td><%=cliente.login%></td>
+			<td><%=cliente.password%></td>
+			<td><%='C ' + cliente.localidad.calle + ' ' + cliente.localidad.exterior+ ' ' + cliente.localidad.interior + ' COL ' + cliente.localidad.colonia + ' ' + cliente.localidad.codigo_postal + ' ' + cliente.localidad.ciudad + ', ' + cliente.localidad.estado.nombre%></td>
+			<td><%=link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), mostrar_cliente_path(cliente.id)%></td>
+			<td><%=link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), editar_cliente_path(cliente.id)%></td>
+			<td><%=link_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), eliminar_cliente_path(cliente.id), method: :delete, data: {confirm: '¿Estas seguro de eliminar cliente?'}%></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+</div>
+<%= will_paginate @clientes %>

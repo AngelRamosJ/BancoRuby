@@ -1,0 +1,75 @@
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+          <span class="fs-1"> Consulta Citas</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Citas</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Tipo de Trámite</th>
+                        <td><%= @cita.tipo_tramite %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Motivo</th>
+                        <td><%= @cita.motivo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Encuentro</th>
+                        <td><%= @cita.fecha_encuentro %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora de Inicio</th>
+                        <td><%= @cita.hora_inicio %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora de Termino</th>
+                        <td><%= @cita.hora_final %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Confirmación</th>
+                        <td><%= @confirmacion %></td>
+                    </tr>
+      
+                    <tr>
+                        <th scope="row">Tipo de Atención</th>
+                        <td><%= @tipo_atencion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cliente</th>
+                        <td><%= @cliente %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Departamento</th>
+                        <td><%= @cita.departamento.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Observación</th>
+                        <td><%= @cita.observacion %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", edit_cita_path(@cita), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", citas_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

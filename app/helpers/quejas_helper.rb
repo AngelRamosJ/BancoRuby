@@ -1,0 +1,2 @@
+module QuejasHelper
+end

@@ -1,0 +1,143 @@
+
+
+
+
+<div class="container mb-5 p-2 p-md-4">
+        <div class="row">
+            <div class="col-lg-5 fondo_formulario_departamentos shadow d-none d-lg-block tamaño_container_nuevo_departamentos">
+
+            </div>
+            <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center px-4 px-md-5 px-lg-4 px-xl-5 shadow tamaño_container_nuevo_departamentos">
+                <div class="row g-3 g-md-4 ">
+                    <div class="col-12 text-center">
+                        <span class="fs-1">
+                            Nuevo  Departamento
+                        </span>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <label class="form-label">Nombre:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.text_field :nombre, class: "form-control form-control-sm text-center"%>
+						<%= form.hidden_field :id%>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <label class="form-label">Teléfono:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.text_field :telefono, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-6">
+                        <label class="form-label">Hora de Apertura:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.text_field :hora_apertura, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-6">
+                        <label class="form-label">Hora de Cierre:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.text_field :hora_cierre, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <label class="form-label">Fecha de Creación:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.date_field :fecha_creacion, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <label class="form-label">Fondo:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.text_field :fondo, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label class="form-label">Limite Personal:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.number_field :maximo_empleados, class: "form-control form-control-sm text-center"%>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Localidad:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                          <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                          <span class="etiqueta-error-texto"></span>
+                          
+                        </div>
+                        <%= form.select 'localidad_id',  @localidades.collect {|p| [p.codigo_postal + " " + p.ciudad + " " + p.colonia + " " + p.exterior, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+                    </div>
+
+                    <div class="col-12 padre_radio">
+                        <label class="col-form-label">Estado o Situación:</label>
+                        <div class="etiqueta-error ocultar_error">
+
+                            <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                            <span class="etiqueta-error-texto"></span>
+                            
+                        </div>
+                        <div class="row">
+                            <div class=" col-3 form-chek ">
+                                
+                                <%= form.radio_button :estado, 'A', :check => true, class: "form-check-input"%><label class= "form-check-label ms-2">Activo</label>
+                            </div>
+                            <div class="col-3 form-chek ">
+                                <%= form.radio_button :estado, 'C', class: "form-check-input"%><label class= "form-check-label ms-2">Cerrado</label>
+                            </div>
+                            <div class="col-6 form-chek">
+                                <%= form.radio_button :estado, 'M', class: "form-check-input"%><label class= "form-check-label ms-2">En Mantenimiento</label>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="col-6 d-grid grap-2 mx-auto">
+                            <%= form.submit "Guardar", class: "btn btn-primary"%>
+                    </div>
+                    <div class="col-6 d-grid grap-2 mx-auto">
+                        <%= link_to "Regresar", departamentos_inicio_path, class: "btn btn-danger text-light"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+		

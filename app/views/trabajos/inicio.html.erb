@@ -1,0 +1,74 @@
+<%= form_tag(buscar_trabajos_path) do%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-4 text-center">
+			<label class="form-label">Salario Minimo</label>
+		</div>
+		<div class="col-4 text-center">
+			<label class="form-label">Area Laboral</label>
+		</div>
+		<div class="col-4 text-center">
+			<label class="form-label">Horas de Trabajo</label>
+		</div>
+		<div class="col-4">
+			<%= text_field_tag "salario_minimo",nil,placeholder: "Ingresa salario minimo", class: "form-control form-control-sm text-center"%>
+		</div>
+		<div class="col-4">
+			<%= text_field_tag "area",nil,placeholder: "Ingresa area laboral", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-4">
+			<%= text_field_tag "horas",nil,placeholder: "Ingresa horas de trabajo", class: "form-control form-control-sm text-center" %>
+		</div>
+		<div class="col-12 mb-5 mt-4 text-center">
+			<%= submit_tag "Buscar", class: "btn btn-success" %>
+		</div>
+	</div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+	<h1>Lista de todos los Trabajos</h1>
+	<%= link_to 'NUEVO', nuevo_trabajo_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>	
+	<%=link_to 'PDF', trabajos_inicio_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+	<thead class="table-dark">
+	<tr>
+		<th>Nombre</th>
+		<th>Salario Minimo</th>
+		<th>Salario Maximo</th>
+		<th>Estudio Minimo</th>
+		<th>Area Laboral</th>
+		<th>Horas por Día</th>
+		<th>Prestaciones</th>
+		<th>Descripcion</th>
+		<th colspan="3"></th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @trabajos.each do |trabajo| %>
+
+		<tr>
+			<td><%=trabajo.nombre%></td>
+			<td><%=trabajo.salario_minimo%></td>
+			<td><%=trabajo.salario_maximo%></td>
+			<td><%=trabajo.estudio_minimo%></td>
+			<td><%=trabajo.area%></td>
+			<td><%=trabajo.horas%></td>
+			<td><%=trabajo.prestacion == 'S' ? "Tiene prestaciones" : "No tiene prestaciones"%></td>
+			<td><%=trabajo.descripcion%></td>
+			
+			<td><%=link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), mostrar_trabajo_path(trabajo.id)%></td>
+			<td><%=link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), editar_trabajo_path(trabajo.id)%></td>
+			<td><%=link_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), eliminar_trabajo_path(trabajo.id), method: :delete, data: {confirm: '¿Estas seguro de eliminar trabajo?'}%></td>
+		</tr>
+
+	<% end %>
+</tbody>
+</table>
+</div>
+<%= will_paginate @trabajos %>

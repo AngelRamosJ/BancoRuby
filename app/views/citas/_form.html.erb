@@ -1,0 +1,186 @@
+<%= form_with(model: cita, local: true, id: 'formulario_citas') do |form| %>
+  <% if cita.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cita.errors.count, "error") %> prohibited this cita from being saved:</h2>
+
+      <ul>
+      <% cita.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="container  mb-5 p-3">
+  <div class="row ">
+      <div class="col-lg-5 fondo_formulario_citas shadow tamaño_container_nuevo_citas d-none d-lg-block">
+
+      </div>
+      <div class="col-12 col-lg-7 d-flex align-items-center justify-content-center shadow px-5 tamaño_container_nuevo_citas">
+          <div class="row g-3">
+              <div class="col-12 text-center">
+                  <span class="fs-1">
+                      Nueva Cita
+                  </span>
+              </div>
+              
+
+              <div class="col-12">
+                  <label class="form-label ">Tipo de Trámite:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.text_field :tipo_tramite, class: "form-control form-control-sm text-center" %>
+              </div>
+              
+              <div class="col-12 ">
+                  <label class="form-label ">Motivo:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.text_field :motivo, class: "form-control form-control-sm text-center" %>
+              </div>
+              <div class="col-6">
+                  <label class="form-label">Hora de Inicio:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.text_field :hora_inicio, class: "form-control form-control-sm text-center" %>
+              </div>
+              <div class="col-6 ">
+                  <label class="form-label ">Hora de Termino:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.text_field :hora_final, class: "form-control form-control-sm text-center" %>
+              </div>
+              <div class="col-12 mb-md-3">
+                  <label class="form-label">Fecha de Encuentro:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.date_field :fecha_encuentro, class: "form-control form-control-sm text-center" %>
+              </div>
+              
+              <div class="col-12 padre_radio">
+                    <label class="col-form-label">Tipo de Atención:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-lg-3 text-center g-0 g-md-3 g-lg-0 g-xl-3 form-chek">
+                  
+                            <%= form.radio_button :tipo_atencion, 'E', :check => true, class: "form-check-input"%><label class="form-check-label">Ejecutiva</label>
+                        </div>
+                        <div class="col-3 col-lg-4 text-center g-0 g-md-3 g-lg-0 g-xl-3 form-chek">
+                         
+                            <%= form.radio_button :tipo_atencion, 'G', class: "form-check-input"%><label class="form-check-label">Gerencial</label>
+                        </div>
+                        <div class="col-5 col-md-4 text-center g-0 g-md-3 g-lg-0 g-xl-3 mb-md-3 form-chek">
+                     
+                            <%= form.radio_button :tipo_atencion, 'P', class: "form-check-input ms-3 ms-md-4 ms-lg-1"%><label class="form-check-label">Personalizada</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                  <label class="form-label">Cliente:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.select 'cliente_id',  @clientes.collect {|p| [p.nombre + ' ' + p.paterno + ' ' + p.materno, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-6">
+                  <label class="form-label ">Departamento:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.select 'departamento_id',  @departamentos.collect {|p| [p.nombre, p.id]}, {include_blank: 'Selecciona uno'}, class: "form-select form-select-sm"%>
+              </div>
+
+              <div class="col-12 padre_radio">
+                    <label class="col-form-label">¿Desea una Confirmación al Correo?:</label>
+                    <div class="etiqueta-error ocultar_error">
+
+                        <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                        <span class="etiqueta-error-texto"></span>
+                        
+                    </div>
+                    <div class="row">
+                       <div class="col-6 text-center g-0 ms-md-0 g-md-3 form-chek">
+                  
+                           <%= form.radio_button :confirmacion, 'S', :check => true, class: "form-check-input ms-md-5"%><label class="form-check-label">Si</label>
+                      </div>
+                      <div class="col-5 text-center g-0 g-md-3 form-chek">
+                          
+                           <%= form.radio_button :confirmacion, 'N', class: "form-check-input"%><label class="form-check-label me-md-5">No</label>
+                      </div>
+                    </div>
+                    
+                </div>
+
+              
+              <div class="col-12 mb-3">
+                  <label class="form-label">Observaciones:</label>
+                  <div class="etiqueta-error ocultar_error">
+
+                      <%=image_tag('error_icono.png', width: 20, height: 20, alt: 'ERROR')%>
+
+                      <span class="etiqueta-error-texto"></span>
+                      
+                  </div>
+                  <%= form.text_area :observacion, class: "form-control form-control-lg text-center"%>
+              </div>
+              
+              <div class="col-6 d-grid grap-2 mx-auto">
+
+                    <%= form.submit "Guardar", class: "btn btn-primary"%>
+                </div>
+                <div class="col-6 d-grid grap-2 mx-auto">
+                    <%= link_to "Regresar", citas_path, class: "btn btn-danger text-light"%>
+                </div>
+          </div>
+      </div>
+  </div>
+        
+        
+    </div>
+
+
+<% end %>

@@ -1,0 +1,98 @@
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados_nuevo ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados_nuevo">
+        
+
+        <div class="col-12 text-center mt-4 mb-3">
+        	<span class="fs-1"> Consulta Clientes</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Clientes</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre</th>
+                        <td><%= @cliente.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Paterno</th>
+                        <td><%= @cliente.paterno %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Materno</th>
+                        <td><%= @cliente.materno %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Telefono</th>
+                        <td><%= @cliente.telefono %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Correo</th>
+                        <td><%= @cliente.correo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CURP</th>
+                        <td><%= @cliente.curp %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">RFC</th>
+                        <td><%= @cliente.rfc %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Nacimiento</th>
+                        <td><%= @cliente.fecha_nacimiento %></td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Estado Laboral</th>
+                        <td><%= @estadoClien %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Salario Mensual</th>
+                        <td><%= @cliente.salario_mensual %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estudio</th>
+                        <td><%= @cliente.estudio %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Años Laborales</th>
+                        <td><%= @cliente.tiempo_laboral %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">¿Riesgo Laboral?</th>
+                        <td><%= @cliente.riesgo_trabajo == 'S' ? "Si, tiene riesgo laboral" : "No, no tiene riesgo laboral" %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Usuario</th>
+                        <td><%= @cliente.login %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Contraseña</th>
+                        <td><%= @cliente.password %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Localidad</th>
+                        <td><%=@localidad%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+            <%= link_to "Editar", editar_cliente_path(@cliente.id), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+      
+            <%= link_to "Regresar", clientes_inicio_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

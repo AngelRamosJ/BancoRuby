@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+        	<span class="fs-1"> Consulta Departamentos</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Departamentos</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre</th>
+                        <td><%= @departamento.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Teléfono</th>
+                        <td><%= @departamento.telefono %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Máximo de Empleados</th>
+                        <td><%= @departamento.maximo_empleados %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fondos</th>
+                        <td><%= @departamento.fondo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Creación</th>
+                        <td><%= @departamento.fecha_creacion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estado o Situación</th>
+                        <td><%= @estadoDep %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora de Apertura</th>
+                        <td><%= @departamento.hora_apertura %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora de Cierre</th>
+                        <td><%= @departamento.hora_cierre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Localidad</th>
+                        <td><%=@localidad%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", editar_departamento_path(@departamento.id), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", departamentos_inicio_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

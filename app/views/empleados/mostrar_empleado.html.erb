@@ -1,0 +1,96 @@
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados_nuevo ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados_nuevo">
+        
+
+        <div class="col-12 text-center mt-4">
+        	<span class="fs-1"> Consulta Empleados</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Empleado</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre</th>
+                        <td><%= @empleado.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Paterno</th>
+                        <td><%= @empleado.paterno %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Materno</th>
+                        <td><%= @empleado.materno %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Telefono</th>
+                        <td><%= @empleado.telefono %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Correo</th>
+                        <td><%= @empleado.correo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CURP</th>
+                        <td><%= @empleado.curp %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">RFC</th>
+                        <td><%= @empleado.rfc %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Nacimiento</th>
+                        <td><%= @empleado.fecha_nacimiento %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Departamento</th>
+                        <td><%= @empleado.departamento.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trabajo</th>
+                        <td><%= @empleado.trabajo.nombre %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Salario</th>
+                        <td><%= @empleado.salario %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Contratación</th>
+                        <td><%= @empleado.fecha_contratacion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bonos</th>
+                        <td><%= @empleado.bono %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Descuentos</th>
+                        <td><%= @empleado.descuento %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">¿Se le puede Prestar Dinero?</th>
+                        <td><%= @empleado.fecha_contratacion == 'S' ? "Si, se le puede prestar dinero" : "No, no se le puede prestar dinero" %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Localidad</th>
+                        <td><%='C ' + @empleado.localidad.calle + ' ' + @empleado.localidad.exterior+ ' ' + @empleado.localidad.interior + ' COL ' + @empleado.localidad.colonia + ' ' + @empleado.localidad.codigo_postal + ' ' + @empleado.localidad.ciudad + ', ' + @empleado.localidad.estado.nombre%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 my-5">
+            <%= link_to "Editar", editar_empleado_path(@empleado.id), class: "btn btn-primary btn-sm text-light mx-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 my-5 ">
+      
+            <%= link_to "Regresar", empleados_inicio_path, class: "btn btn-danger btn-sm text-light mx-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

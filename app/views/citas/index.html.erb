@@ -1,0 +1,89 @@
+
+
+
+<%= form_tag(buscar_citas_path) do%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 text-center">
+      <label class="form-label">Hora de Inicio</label>
+    </div>
+    <div class="col-6 text-center">
+      <label class="form-label">Hora de Termino</label>
+    </div>
+ 
+    <div class="col-6">
+      <%= text_field_tag "hora_inicio",nil,placeholder: "Ingresa hora de inicio", class: "form-control form-control-sm text-center"%>
+    </div>
+    <div class="col-6">
+      <%= text_field_tag "hora_final",nil,placeholder: "Ingresa hora de termino", class: "form-control form-control-sm text-center" %>
+    </div>
+
+    <div class="col-12 mb-5 mt-4 text-center">
+      <%= submit_tag "Buscar", class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+<div class="container-fluid d-flex">
+  <h1>Lista de todas las Citas</h1>
+  <%= link_to 'NUEVO', new_cita_path, class: "btn btn-outline-primary btn-sm mt-2 mb-3 ms-3" %>  
+  <%=link_to 'PDF', citas_path( format: :pdf ), class: "btn btn-outline-danger btn-sm mt-2 mb-3 ms-3"%>
+</div>
+
+
+
+
+<div class="card-body table-responsive">
+<table class="table table-light table-striped table-hover table-bordered border-dark table-sm caption-top align-middle text-center">
+  <thead class="table-dark">
+    <tr>
+      <th>Tipo tramite</th>
+      <th>Motivo</th>
+      <th>Fecha encuentro</th>
+      <th>Hora inicio</th>
+      <th>Hora final</th>
+      <th>Confirmacion</th>
+      <th>Tipo atencion</th>
+      <th>Cliente</th>
+      <th>Departamento</th>
+      <th>Observación</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @citas.each do |cita| %>
+      <tr>
+        <td><%= cita.tipo_tramite %></td>
+        <td><%= cita.motivo %></td>
+        <td><%= cita.fecha_encuentro %></td>
+        <td><%= cita.hora_inicio %></td>
+        <td><%= cita.hora_final %></td>
+        <td><%= cita.confirmacion == 'S' ? 'Si' : 'No' %></td>
+        <% if cita.tipo_atencion == 'E'
+          atencionCita = "Ejecutiva"
+        elsif cita.tipo_atencion == 'G'
+          atencionCita = "Gerencial"
+        else
+          atencionCita = "Personalizada"
+        end
+           %>
+        <td><%=atencionCita%></td>
+        
+        <td><%= cita.cliente.nombre + ' ' + cita.cliente.paterno + ' ' + cita.cliente.materno %></td>
+        <td><%= cita.departamento.nombre %></td>
+        <td><%= cita.observacion %></td>
+        
+        <td><%= link_to image_tag('buscar.png', width: 40, height: 40, alt: 'Mostrar'), cita %></td>
+        <td><%= link_to image_tag('editar.png', width: 40, height:40, alt: 'Editar'), edit_cita_path(cita) %></td>
+        <td><%= button_to image_tag('eliminado.png', width: 40, height:40, alt: 'Eliminar'), cita_path(cita), method: :delete, data: {confirm: '¿Estas seguro de eliminar cita?'} %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+<%= will_paginate @citas %>

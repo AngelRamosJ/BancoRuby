@@ -1,0 +1,18 @@
+<!--<h1>Administracion Usuarios</h1>
+
+<form method="POST" action="/usuarios/inicio">
+	<label>Nombre</label>
+	<input type="text" name="txtNombre" id="txtNombre">
+
+	<input type="Submit" value="Guardar">
+</form>
+
+<br>-->
+
+    				
+<%= form_with(model: @departamento, url: guardar_departamento_path, id: 'formulario_departamentos' , class: "form") do |f| %>
+	<%= render 'formulario', form: f%>
+<% end %>
+
+				
+				

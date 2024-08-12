@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+    <%= link_to  empleados_inicio_path, class: "navbar-brand" do%>
+    <%= image_tag("inicio_pagina", width: 30, height:30 ,:alt => "Inicio")%>
+    <span>Inicio</span>
+    <% end%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Empleados
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Empleados", empleados_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Empleado", nuevo_empleado_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Clientes
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Clientes", clientes_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Cliente", nuevo_cliente_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Departamentos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Departamentos", departamentos_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Departamento", nuevo_departamento_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trabajos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Trabajos", trabajos_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Trabajo", nuevo_trabajo_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Localidades
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to 'Inicio Localidades', localidades_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'Nueva Localidad', new_localidad_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Préstamos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to 'Inicio Préstamos', prestamos_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'Nuevo Préstamo', new_prestamo_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Citas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to 'Inicio Citas', citas_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'Nueva Cita', new_cita_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Quejas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to 'Inicio Quejas', quejas_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'Nueva Queja', new_queja_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Debitos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Debitos", debitos_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Debito", nuevo_debito_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ahorros
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%= link_to "Inicio Ahorros", ahorros_inicio_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo Ahorro", nuevo_ahorro_path, class: "dropdown-item" %></li>
+            </ul>
+        </li>
+        <li class="nav-item"><%= link_to "Cerrar Sesión", cerrar_sesion_empleado_path, class: "nav-link" %></li>
+        </ul>
+    </div>
+    </div>
+</nav>

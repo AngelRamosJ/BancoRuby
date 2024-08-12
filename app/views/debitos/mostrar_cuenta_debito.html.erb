@@ -1,0 +1,83 @@
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+        	<span class="fs-1"> Consulta Cuentas de Débito</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Cuentas de Débito</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">CLABE</th>
+                        <td><%= @debito.clabe %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Número de Tarjeta</th>
+                        <td><%= @debito.numero_tarjeta %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Monto</th>
+                        <td><%= @debito.monto %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Monto Máximo</th>
+                        <td><%= @debito.monto_maximo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estado</th>
+                        <td><%= @estado %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Creación</th>
+                        <td><%= @debito.fecha_creacion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Saldo Mínimo</th>
+                        <td><%= @debito.saldo_minimo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Comisión</th>
+                        <td><%= @debito.comision %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Seguro</th>
+                        <td><%=@seguro%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cobro por Inactividad</th>
+                        <td><%= @debito.cobro_inactividad %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bonificación por Uso</th>
+                        <td><%= @debito.bonificacion_uso %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cliente</th>
+                        <td><%= @cliente %></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", editar_debito_path(@debito.id), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", debitos_inicio_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

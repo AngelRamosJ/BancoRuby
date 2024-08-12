@@ -1,0 +1,69 @@
+ready = -> 
+	validator = $('#formulario').validate
+		rules:
+			'empleado[nombre]':
+				required: true
+			'empleado[paterno]':
+				required: true
+			'empleado[materno]':
+				required: true
+			'empleado[correo]':
+				required: true
+			'empleado[telefono]':
+				required: true
+			'empleado[fecha_nacimiento]':
+				required: true
+			'empleado[curp]':
+				required: true
+			'empleado[rfc]':
+				required: true
+			'empleado[salario]':
+				required: true
+			'empleado[trabajo_id]':
+				required: true
+			'empleado[departamento_id]':
+				required: true
+			'empleado[fecha_contratacion]':
+				required: true
+			'empleado[localidad_id]':
+				required: true
+			'empleado[login]':
+				required: true
+			'empleado[password]':
+				required: true
+		messages:
+			'empleado[nombre]':
+				required: 'Nombre Requerido'
+			'empleado[paterno]':
+				required: 'Apellido Paterno Requerido'
+			'empleado[materno]':
+				required: 'Apellido Materno Requerido'
+			'empleado[correo]':
+				required: 'Correo Requerido'
+			'empleado[telefono]':
+				required: 'Teléfono Requerido'
+			'empleado[fecha_nacimiento]':
+				required: 'Fecha de Nacimiento Requerido'
+			'empleado[curp]':
+				required: 'CURP Requerida'
+			'empleado[rfc]':
+				required: 'RFC Requerido'
+			'empleado[salario]':
+				required: 'Salario Requerido'
+			'empleado[trabajo_id]':
+				required: 'Trabajo Requerido'
+			'empleado[departamento_id]':
+				required: 'Departamento Requerido'
+			'empleado[fecha_contratacion]':
+				required: 'Fecha de Contratación Requerida'
+			'empleado[localidad_id]':
+				required: 'Localidad Requerida'
+			'empleado[login]':
+				required: 'Usuario Requerido'
+			'empleado[password]':
+				required: 'Contraseña Requerida'
+
+		errorElement: 
+			"div"
+$(document).ready(ready)
+$(document).on('turbolinks:load',ready) 

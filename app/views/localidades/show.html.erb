@@ -1,0 +1,70 @@
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+          <span class="fs-1"> Consulta Localidades</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Localidades</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Tipo</th>
+                        <td><%= @localidad.tipo == 'U' ? "Urbana" : "Rural" %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Código Postal</th>
+                        <td><%= @localidad.codigo_postal %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Municipio</th>
+                        <td><%= @localidad.municipio %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ciudad</th>
+                        <td><%= @localidad.ciudad %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Colonia</th>
+                        <td><%= @localidad.colonia %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Calle</th>
+                        <td><%= @localidad.calle %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Exterior</th>
+                        <td><%= @localidad.exterior %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interior</th>
+                        <td><%= @localidad.interior %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estado</th>
+                        <td><%= @localidad.estado.nombre %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", edit_localidad_path(@localidad), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", localidades_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

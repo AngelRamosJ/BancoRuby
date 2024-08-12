@@ -1,0 +1,72 @@
+
+
+
+<div class="container-fluid p-4 px-5 fondo_mostrar_empleados ">
+    <div class="row shadow-lg bg-light tamaño_container_mostrar_empleados">
+        
+
+        <div class="col-12 text-center mt-4">
+          <span class="fs-1"> Consulta Préstamos</span>
+        </div>
+
+        <div class="col-12 d-flex align-items-center justify-content-center  px-5 ">
+            <table id="tab" class="stacktable table table-sm table-striped table-hover table-bordered align-middle caption-top table-responsive ">
+                <caption>Información de Préstamos</caption>
+                <thead class="table-dark text-center ">
+                    <tr>
+                        <th scope="col">Datos</th>
+                        <th scope="col">Valores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nombre o Descripción</th>
+                        <td><%= @prestamo.descripcion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cantidad</th>
+                        <td><%= @prestamo.cantidad %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Intereses</th>
+                        <td><%= @prestamo.intereses %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Expedición</th>
+                        <td><%= @prestamo.fecha_expedicion %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fecha de Termino</th>
+                        <td><%= @prestamo.fecha_termino %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Días de Tolerancia</th>
+                        <td><%= @prestamo.tiempo_tolerancia %></td>
+                    </tr>
+      
+                    <tr>
+                        <th scope="row">Modo de Pago</th>
+                        <td><%= @pagoPrestamo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Estado o Situación</th>
+                        <td><%= @estadoPrestamo %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cliente</th>
+                        <td><%= @cliente %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 d-grid grap-2 py-5">
+            <%= link_to "Editar", edit_prestamo_path(@prestamo), class: "btn btn-primary btn-sm text-light mx-5 my-5 fs-4"%>
+           
+        </div>
+        <div class="col-6 d-grid grap-2 py-5 ">
+      
+            <%= link_to "Regresar", prestamos_path, class: "btn btn-danger btn-sm text-light mx-5 my-5 fs-4"%>
+        </div>
+     
+    </div>
+</div>

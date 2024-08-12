@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Monto nuevo:</strong>
+  <%= @transaccion.monto_nuevo %>
+</p>
+
+<p>
+  <strong>Monto anterior:</strong>
+  <%= @transaccion.monto_anterior %>
+</p>
+
+<p>
+  <strong>Fecha creacion:</strong>
+  <%= @transaccion.fecha_creacion %>
+</p>
+
+<p>
+  <strong>Mes:</strong>
+  <%= @transaccion.mes %>
+</p>
+
+<p>
+  <strong>Hora creacion:</strong>
+  <%= @transaccion.hora_creacion %>
+</p>
+
+<p>
+  <strong>Tipo envio:</strong>
+  <%= @transaccion.tipo_envio %>
+</p>
+
+<p>
+  <strong>Clabe origen:</strong>
+  <%= @transaccion.clabe_origen %>
+</p>
+
+<p>
+  <strong>Clabe destino:</strong>
+  <%= @transaccion.clabe_destino %>
+</p>
+
+<p>
+  <strong>Tarjeta destino:</strong>
+  <%= @transaccion.tarjeta_destino %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @transaccion.cliente %>
+</p>
+
+<%= link_to 'Edit', edit_transaccion_path(@transaccion) %> |
+<%= link_to 'Back', transacciones_path %>
